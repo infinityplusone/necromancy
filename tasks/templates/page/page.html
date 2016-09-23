@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title><%= title %></title>
+		<link rel="stylesheet" href="<%= relPath %>../../assets/<%= name %>.css">
+	</head>
+	<body class="page page__<%= name %>" data-page="<%= name %>">
+
+	<!-- Content here! -->
+
+	<script src="<%= relPath %>../config.js"></script>
+	<script data-main="./app/<%= dest %>/<%= name %>" src="<%= relPath %>../../bower_components/requirejs/require.js"></script>
+	</body>
+</html>

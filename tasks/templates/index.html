@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%=refresh%>
+    <title><%=title%></title>
+    <style type="text/css">
+      html, body {
+        margin: 0;
+        padding: 0;
+        background: #fff;
+        font-family: Helvetica, Arial, sans-serif;
+      }
+      .navbar--header {
+        height: 56px;
+        background: #1D1E25;
+        vertical-align: middle;
+        min-width: 1024px;
+      }
+      .navbar--header .navbar__logo {
+        display: inline-block;
+        width: 5rem;
+        height: 56px;
+        float: left;
+        /*background: transparent url('assets/images/navbar/ndaq_singlelogo-blue.png') no-repeat 20px;*/
+        background-size: 44px;
+        border-right: 1px solid #474a53;
+      }
+      .navbar--header h1 {
+        display: inline-block;
+        color: #fff;
+        line-height: 56px;
+        padding: 0;
+        margin: 0 1rem;
+        font-family: Helvetica, Arial, sans-serif;
+        font-weight: normal;
+        font-size: 1.75rem;
+      }
+      .pages {
+        display: block;
+        padding: 2rem 6rem;
+        margin: 0;
+      }
+      .pages li {
+        display: block;
+        line-height: 1.5;
+        list-style: none;
+        color: #999;
+        margin: 0 0 2rem;
+      }
+      .pages li a {
+        text-transform: capitalize;
+        font-size: 1.25rem;
+      }
+      .pages li time {
+        display: block;
+        font-size: 0.75rem;
+        color: #666;
+        font-style: italic;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="navbar--header">
+      <a class="navbar__logo" href="./"></a>
+      <h1><%=title%></h1>
+    </header>
+    <ul class="pages">
+      <%=pages%>
+    </ul>
+  </body>
+</html>
