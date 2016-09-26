@@ -53,7 +53,7 @@ module.exports = function( grunt ) {
     });
 
     var readMe = grunt.file.read('README.md');
-    grunt.file.write('README.md', readMe.replace(/(# Prodaq Daqstaq v).*/, '$1' +  '0.1.0'));
+    grunt.file.write('README.md', readMe.replace(/(# Necromancy v).*/, '$1' +  '0.1.0'));
 
   });
 

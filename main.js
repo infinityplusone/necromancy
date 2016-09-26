@@ -1,5 +1,5 @@
 /*
- * Loads tasks from other modules for use by Daqstaq
+ * Loads tasks from other modules for use by Necromancy
  *
  * Author(s):  Jonathan "Yoni" Knoll
  * Version:    0.1.0

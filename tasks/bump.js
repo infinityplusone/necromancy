@@ -52,9 +52,6 @@ module.exports = function( grunt ) {
     ]).forEach(function(f) {
       var json = grunt.file.readJSON(f);
       json.version = version;
-      json.daqstaq = {
-        version: version
-      };
       grunt.file.write(f, JSON.stringify(json, null, 2));
     });
 

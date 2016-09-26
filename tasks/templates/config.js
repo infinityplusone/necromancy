@@ -21,23 +21,17 @@
       'bootstrap':            'bower_components/bootstrap/js',
       'jquery':               'bower_components/jquery/dist/jquery',
 
-      'bones':                'bower_components/bones/src',
-      'brain':                'bower_components/brain/src',
-      'qore-data':            'bower_components/hippo'
+      'bones':                'bower_components/bones',
+      'brain':                'bower_components/brain/brain',
+      'hippo':                'bower_components/hippo/hippo'
     },
-    packages: [
-      {
-        name: 'brain',
-        main: 'brain'
-      }
-    ],
     shim: {
       'bones': {
-        deps: [ 'brain', 'bone', 'jquery', 'handlebars', 'text' ],
+        deps: [ 'brain', 'bone', 'jquery' ],
         exports: 'bones'
       },
       'brain': {
-        deps: [ 'handlebars', 'jquery', 'jquery-bindable', 'lodash', 'lodash-inflection', 'moment', 'text' ],
+        deps: [ 'brainybars', 'jquery', 'jquery-bindable', 'lodash', 'lodash-inflection', 'moment', 'text' ],
         exports: 'brain'
       },
       'hippo': {
@@ -45,8 +39,12 @@
       }
     },
     deps: [
-      // 'brain',
+      'hippo',
+      'brain',
       'app/common'
-    ]
+    ],
+    callback: function(Hippo, brain) {
+      brain.Hippo = Hippo;
+    }
   };
 })();

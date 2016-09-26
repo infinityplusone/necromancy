@@ -24,8 +24,5 @@
     "test",
     "tests",
     "tasks"
-  ],
-  "daqstaq": {
-    "version": "0.1.0"
-  }
+  ]
 }

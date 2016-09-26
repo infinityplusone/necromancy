@@ -3,7 +3,7 @@
  * Name: <%= name %>/<%= name %>.js
  * Description: <%= meta.description %>
  * Author(s): <%= meta.author %>
- * Dependencies: infinityplusone, bones
+ * Dependencies: brain, bones
 
  * Version:    0.7.0
  * Last Modified: <%= meta.created_at %>
@@ -13,22 +13,19 @@
  */
 
 requirejs([
-  'bones/manager/main',
+  'bones/skeleton',
   'text!app/<%= dest %>/<%= name %>.hbs',
-  // 'skeleton/component-name/component-name', // using a component?
-  // 'lib-name', // using a new component/library?
-  'skeleton/panels/panels',
-  'infinityplusone'
-], function(Manager, tmpl) {
+  'brain'
+], function(Skeleton, tmpl) {
 
-  infinityplusone.handlebars.addTemplates(tmpl);
+  brain.handlebars.addTemplates(tmpl);
 
   var $body = $('body');
 
   // Add the page's code to the page
-  $body.append(infinityplusone.templates['<%= name %>']());
+  $body.append(brain.templates['<%= name %>']());
 
-  var PageManager = Manager.create({
+  var PageManager = Skeleton.create({
     name: '<%= title %> Page',
 
     onManagerReady: function() {
@@ -46,10 +43,10 @@ requirejs([
 
   }); // (Page)Manager
 
-  infinityplusone.log(PageManager.name, 'info');
+  brain.log(Skeleton.name, 'info');
 
-  infinityplusone.Qore.on('qore:ready', function() {
-    PageManager.init({
+  Hippo.on('hippo:ready', function() {
+    Skeleton.init({
       // ...
     }); // PageManager.config
   }).init('<%= project %>');

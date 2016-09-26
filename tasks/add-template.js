@@ -33,7 +33,7 @@ module.exports = function( grunt ) {
       console.log(colors.white.bold('\n Used --force, continuing.\n'));
     }
     grunt.file.copy(grunt.config('meta.dir.templates.' + template), location);
-    console.log('\nAdd this line to your Gruntfile.js:\n\n\t' + colors.green.bold('daqstaq.useTemplate(\'' + template + '\', \'' + location + '\');'));
+    console.log('\nAdd this line to your Gruntfile.js:\n\n\t' + colors.green.bold('necromancy.useTemplate(\'' + template + '\', \'' + location + '\');'));
   });
 
 };
