@@ -67,7 +67,7 @@ module.exports = function(grunt, dir) {
         expand: true,
         flatten: true,
         filter: 'isFile',
-        cwd: '<%=meta.dir.skeleton%>',
+        cwd: '<%=meta.dir.common%>',
         src: [
           '**/fonts/*.*',
           '**/fonts/**/*.*',
@@ -85,7 +85,6 @@ module.exports = function(grunt, dir) {
           '<%=meta.dir.app%>/**/*.{bmp,gif,jpg,png,svg}',
           '<%=meta.dir.bones%>/**/*.{bmp,gif,jpg,png,svg}',
           '<%=meta.dir.common%>/**/*.{bmp,gif,jpg,png,svg}',
-          '<%=meta.dir.skeleton%>/**/*.{bmp,gif,jpg,png,svg}',
           '!**/docs/**',
           '!**/fonts/**'
         ],
@@ -143,8 +142,7 @@ module.exports = function(grunt, dir) {
     less: {
       files: [
         '<%=meta.dir.app%>/**/*.less',
-        '<%=meta.dir.common%>/**/*.less',
-        '<%=meta.dir.skeleton%>/**/*.less'
+        '<%=meta.dir.common%>/**/*.less'
       ],
       tasks: ['less']
     } // less
