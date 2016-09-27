@@ -1,6 +1,6 @@
 /*
  * Name: config.js
- * Description: RequireJS configuration for <%= name %>
+ * Description: RequireJS configuration for <%=name%>
  * 
  * Author(s):  infinityplusone
  * Version:    0.1.4
@@ -19,13 +19,38 @@
 
     paths: {
       'bootstrap':            'bower_components/bootstrap/js',
+      'handlebars':           'bower_components/handlebars/handlebars',
       'jquery':               'bower_components/jquery/dist/jquery',
+      'jquery-bindable':      'bower_components/jquery-enable/dist/jquery.bindable',
+      'json2':                'bower_components/json2',
+      'lodash':               'bower_components/lodash/dist/lodash.min',
+      'lodash-inflection':    'bower_components/lodash-inflection/lib/lodash-inflection',
+      'moment':               'bower_components/moment/moment',
+      'text':                 'bower_components/requirejs-text/text', // this is needed because we *always* bring in templates or JSON
 
-      'bones':                'bower_components/bones',
-      'brain':                'bower_components/brain/brain',
-      'hippo':                'bower_components/hippo/hippo'
+      
+      'brain':                'bower_components/brain',
+      'brainybars':           'bower_components/brainybars',
+      'hippo':                'bower_components/hippo',
+      'bones':                'bower_components/bones'
     },
+    packages: [
+      {
+        name: 'brain',
+        main: 'brain'
+      },
+      {
+        name: 'brainybars',
+        main: 'brainybars'
+      },
+      {
+        name: 'hippo',
+        main: 'hippo'
+      }
+    ],
     shim: {
+      'jquery-bindable':      { deps: [ 'jquery' ] },
+      'lodash-inflection':    { deps: [ 'lodash' ] },
       'bones': {
         deps: [ 'brain', 'bone', 'jquery' ],
         exports: 'bones'
@@ -35,7 +60,8 @@
         exports: 'brain'
       },
       'hippo': {
-        deps: [ 'jquery', 'jquery-bindable', 'json2', 'lodash', 'lodash-inflection', 'brain' ]
+        deps: [ 'jquery', 'jquery-bindable', 'json2/cycle', 'lodash', 'lodash-inflection', 'brain' ],
+        exports: 'Hippo'
       }
     },
     deps: [

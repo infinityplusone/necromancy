@@ -45,10 +45,10 @@ requirejs([
 
   brain.log(Skeleton.name, 'info');
 
-  Hippo.on('hippo:ready', function() {
+  brain.Hippo.on('hippo:ready', function() {
     Skeleton.init({
       // ...
-    }); // PageManager.config
+    }); // Skeleton.config
   }).init('<%= project %>');
 
 }); // requirejs
