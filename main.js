@@ -62,22 +62,6 @@ module.exports = function(grunt, dir) {
     options: {
       verbose: true
     },
-    fonts: {
-      files: [{
-        expand: true,
-        flatten: true,
-        filter: 'isFile',
-        cwd: '<%=meta.dir.common%>',
-        src: [
-          '**/fonts/*.*',
-          '**/fonts/**/*.*',
-          '!*.less',
-          '!README.md',
-          '!**/docs/**'
-        ],
-        dest: '<%=meta.dir.assets%>/fonts'
-      }]
-    },
     assets: {
       files: [{
         expand: true,

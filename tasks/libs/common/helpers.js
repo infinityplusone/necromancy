@@ -69,6 +69,12 @@ module.exports = function(grunt) {
       return _.startCase(args.name);
     }, // checkName
 
+    config: function(section, config) {
+      var gruntConfig = grunt.config(section) || {};
+
+      grunt.config(section, _.extend(gruntConfig, config));
+    }, // config
+
     deleteFile: function(src) {
       if(grunt.file.exists(src)) {
         grunt.file.delete(src);
