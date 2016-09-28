@@ -13,6 +13,8 @@ module.exports = function(grunt, dir) {
   var path = require('path');
   var colors = require('colors');
 
+  grunt.config('collect', ['copy-assets', 'less']);
+
   // Project configuration
   grunt.config('meta', {
     dir: {
@@ -136,7 +138,7 @@ module.exports = function(grunt, dir) {
 
   // Load the necessary node modules. 
   // This is probably a bad way to do it, but I do not know a better one (yet)
-  var npmTasks = ['grunt-contrib-clean', 'grunt-contrib-copy', 'grunt-contrib-less', 'grunt-simple-watch', 'bones'];
+  var npmTasks = ['grunt-contrib-clean', 'grunt-contrib-copy', 'grunt-contrib-less', 'grunt-simple-watch', 'bones', 'hippo'];
 
   npmTasks.forEach(function(task) {
     if(grunt.file.exists('./node_modules/necromancy/node_modules/' + task)) {
@@ -153,7 +155,7 @@ module.exports = function(grunt, dir) {
   // for now, just running what we need to get things working
   grunt.registerTask('copy-assets', ['copy:fonts', 'copy:assets']);
 
-  grunt.registerTask('collect', ['generate:shapes', 'generate:schema', 'copy-assets', 'less']);
+  grunt.registerTask('collect', grunt.config('collect'));
 
   grunt.registerTask('refresh', ['clean:bower']);
 
