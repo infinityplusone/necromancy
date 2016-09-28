@@ -13,7 +13,7 @@ module.exports = function(grunt, dir) {
   var path = require('path');
   var colors = require('colors');
 
-  grunt.config('collect', ['copy-assets', 'less']);
+  grunt.config('collect', ['find-tables', 'copy-assets', 'less']);
 
   // Project configuration
   grunt.config('meta', {
@@ -123,7 +123,7 @@ module.exports = function(grunt, dir) {
         '<%=meta.dir.common%>/**/*.json',
         '<%=meta.dir.common%>/**/data/**'
       ],
-      tasks: ['generate:schema']
+      tasks: ['find-tables']
     },
     less: {
       files: [
