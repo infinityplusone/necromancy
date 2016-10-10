@@ -203,11 +203,13 @@ if [[ ! $commit =~ $reNo ]]; then
   #   exit 1;
   # fi
 
-  Checkout your original branch again to get us back to the beginning
+  // Checkout your original branch again to get us back to the beginning
   echo "\n\tSwitching back to ${cyan}$branch${nc}"
   git checkout -q $branch
+  rm -rf assets
+  npm install
   rm -rf bower_components
-  sh scripts/setup.sh
+  bower install -f
   grunt collect
 else
   sh scripts/setup.sh
