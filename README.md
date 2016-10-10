@@ -1,4 +1,4 @@
-# Necromancy v0.1.0
+# Necromancy v0.2.0
 
 #### Requirements
  * npm

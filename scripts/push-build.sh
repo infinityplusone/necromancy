@@ -176,6 +176,7 @@ if [[ ! $commit =~ $reNo ]]; then
   git add -f assets
   git add -f app/*
   git add -f bower_components
+  git add -f hippo-schema.json
 
   git rm -rf tasks --force
   git rm -rf scripts --force
