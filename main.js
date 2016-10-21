@@ -2,8 +2,8 @@
  * Loads tasks from other modules for use by Necromancy
  *
  * Author(s):  Jonathan "Yoni" Knoll
- * Version:    0.2.0
- * Date:       2016-10-10
+ * Version:    0.3.0
+ * Date:       2016-10-21
  *
  */
 
