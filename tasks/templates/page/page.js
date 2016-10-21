@@ -22,33 +22,34 @@ requirejs([
 
   var $body = $('body');
 
-  // Add the page's code to the page
-  $body.append(brain.templates['<%= name %>']());
-
-  var PageManager = Skeleton.create({
+  brain.Page = Skeleton.create({
     name: '<%= title %> Page',
 
-    onManagerReady: function() {
+    onSkeletonReady: function() {
       var mgr = this;
 
-      mgr._super('onManagerReady');
+      mgr._super('onSkeletonReady');
 
       /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
       /* =-=-=-=-=-= Add Your JS Here  =-=-=-=-=-= */
-      
 
       /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
 
-    } // onManagerReady
+    } // onSkeletonReady
 
-  }); // (Page)Manager
+  });
 
-  brain.log(Skeleton.name, 'info');
+  brain.log(brain.Page.name, 'info');
 
   brain.Hippo.on('hippo:ready', function() {
-    Skeleton.init({
+
+    // Add the page's code to the page
+    $body.append(brain.templates['<%= name %>']());
+
+    brain.Page.init({
       // ...
-    }); // Skeleton.config
+    });
+
   }).init('<%= project %>');
 
 }); // requirejs

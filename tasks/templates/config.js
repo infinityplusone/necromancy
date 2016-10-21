@@ -31,7 +31,7 @@
       
       'brain':                'bower_components/brain',
       'brainybars':           'bower_components/brainybars',
-      'hippo':                'bower_components/hippo',
+      'hippo':                'bower_components/hippo/hippo.min',
       'bones':                'bower_components/bones'
     },
     packages: [
@@ -42,10 +42,6 @@
       {
         name: 'brainybars',
         main: 'brainybars'
-      },
-      {
-        name: 'hippo',
-        main: 'hippo'
       }
     ],
     shim: {
@@ -58,10 +54,6 @@
       'brain': {
         deps: [ 'brainybars', 'jquery', 'jquery-bindable', 'lodash', 'lodash-inflection', 'moment', 'text' ],
         exports: 'brain'
-      },
-      'hippo': {
-        deps: [ 'jquery', 'jquery-bindable', 'json2/cycle', 'lodash', 'lodash-inflection', 'brain' ],
-        exports: 'Hippo'
       }
     },
     deps: [
@@ -70,6 +62,7 @@
       'app/common'
     ],
     callback: function(Hippo, brain) {
+      window.Hippo = Hippo;
       brain.Hippo = Hippo;
     }
   };
