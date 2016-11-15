@@ -2,8 +2,8 @@
  * Provides destroy:page to destroy Grunt Task
  *
  * Author(s):  Jonathan "Yoni" Knoll
- * Version:    0.3.0
- * Date:       2016-10-21
+ * Version:    0.4.0
+ * Date:       2016-11-15
  *
  */
 

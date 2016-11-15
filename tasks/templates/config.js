@@ -25,6 +25,7 @@
       'json2':                'bower_components/json2',
       'lodash':               'bower_components/lodash/dist/lodash.min',
       'lodash-inflection':    'bower_components/lodash-inflection/lib/lodash-inflection',
+      'lz-string':            'bower_components/lz-string/libs/lz-string.min',
       'moment':               'bower_components/moment/moment',
       'text':                 'bower_components/requirejs-text/text', // this is needed because we *always* bring in templates or JSON
 
@@ -63,7 +64,13 @@
     ],
     callback: function(Hippo, brain) {
       window.Hippo = Hippo;
+
       brain.Hippo = Hippo;
+      
+      // Hippo.on('hippo:ready', function() {
+      //   // This is right place to enhance/tweak the data in Hippo
+      // });
     }
+
   };
 })();

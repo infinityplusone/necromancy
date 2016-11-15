@@ -22,13 +22,13 @@ requirejs([
 
   var $body = $('body');
 
-  brain.Page = Skeleton.create({
+  var Page = brain.Page = Skeleton.create({
     name: '<%= title %> Page',
 
     onSkeletonReady: function() {
-      var mgr = this;
+      var skel = this;
 
-      mgr._super('onSkeletonReady');
+      skel._super('onSkeletonReady');
 
       /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
       /* =-=-=-=-=-= Add Your JS Here  =-=-=-=-=-= */
@@ -44,11 +44,10 @@ requirejs([
   brain.Hippo.on('hippo:ready', function() {
 
     // Add the page's code to the page
-    $body.append(brain.templates['<%= name %>']());
+    Page.$elem = brain.templates['<%= name %>'](Page);
+    $body.append(Page.$elem);
 
-    brain.Page.init({
-      // ...
-    });
+    Page.init({});
 
   }).init('<%= project %>');
 

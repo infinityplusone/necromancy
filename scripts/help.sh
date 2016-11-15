@@ -65,16 +65,6 @@ else
   echo ".bowerrc: Missing!" >> $obiWan
 fi
 
-printf "Getting nasdaqcerts.pem... "
-if [ -e ~/nasdaqcerts.pem ]; then
-  echo ""
-  echo "nasdaqcerts.pem: Copied!" >> $obiWan
-  cp ~/nasdaqcerts.pem $tmp
-else
-  echo "${red}Missing!${nc}"
-  echo "nasdaqcerts.pem: Missing!" >> $obiWan
-fi
-
 printf "Getting package.json... "
 if [ -e package.json ]; then
   echo ""
@@ -114,5 +104,5 @@ cd $projectPath
 
 echo "\n${green}Done!\n\n\n${nc}"
 
-echo "Please send the file ${cyan}${tarFile}${nc} to ${cyan}DL-ProdaqToolsSupport@nasdaq.com${nc}\n\n"
+echo "Please send the file ${cyan}${tarFile}${nc} to ${cyan}@yoni${nc}!\n\n"
 

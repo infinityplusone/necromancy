@@ -2,8 +2,8 @@
  * Provides prep-build.js as Grunt task
  *
  * Author(s):  Jonathan "Yoni" Knoll
- * Version:    0.3.0
- * Date:       2016-10-21
+ * Version:    0.4.0
+ * Date:       2016-11-15
  *
  */
 module.exports = function( grunt ) {
