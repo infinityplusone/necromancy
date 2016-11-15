@@ -10,26 +10,10 @@ red='\033[0;31m'$blackBG
 yellow='\033[1;33m'$blackBG
 nc='\033[0m'$blackBG
 
-# echo "\n${cyan}Fetching latest info on daqstaq${nc}\n"
+rm -rf node_modules/hippo*
+rm -rf node_modules/necromancy*
+rm -rf node_modules/bones*
 
-# gitVersion=$(git ls-remote -t git@github.com:infinityplusone/necromancy.git | sed -e 's/^.*refs\/tags\/v//g' | sed -e ':a' -e '$!ba' -e 'N' -e 's/\n//g')
-# if [[ $gitVersion == "" ]]; then
-#   echo "nope"
-#   gitVersion=$(git ls-remote -t git@github.com:infinityplusone/necromancy.git | sed -e 's/.*refs\/tags\/v//g' | sed -e ':a' -e '$!ba' -e 's/\n//g')
-# fi
-# localVersion=$(node -pe 'JSON.parse(process.argv[1]).daqstaq.version' "$(cat bower.json)")
-
-# echo "  Git: $gitVersion"
-# echo "Local: $localVersion"
-
-# if [[ $gitVersion == $localVersion ]]; then
-#   echo "\n\t${green}You're up to date!${nc}\n"
-# else
-#   echo "\n\t${cyan}Uh-oh!${nc}\n"
-# fi
-
-rm -rf node_modules/starter-kit*
-rm -rf node_modules/daqstaq*
 echo "\n${cyan}Updating npm components...${nc}\n"
 npm install
 
@@ -38,6 +22,9 @@ bower update
 
 echo "\n${cyan}Updating generated assets...${nc}\n"
 grunt collect
+
+echo "\n${cyan}Copying latest scripts from necromancy...${nc}\n"
+cp node_modules/necromancy/scripts/run ./scripts
 
 echo "\n${green}Done!\n${nc}"
 
