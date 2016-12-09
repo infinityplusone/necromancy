@@ -2,8 +2,8 @@
  * Provides build.js as Grunt task
  *
  * Author(s):  Jonathan "Yoni" Knoll
- * Version:    0.5.1
- * Date:       2016-11-15
+ * Version:    0.5.2
+ * Date:       2016-12-09
  *
  */
 

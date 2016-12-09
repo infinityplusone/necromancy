@@ -2,8 +2,8 @@
  * Provides bump.js as Grunt task
  *
  * Author(s):  Jonathan "Yoni" Knoll
- * Version:    0.5.1
- * Date:       2016-11-15
+ * Version:    0.5.2
+ * Date:       2016-12-09
  *
  */
 
@@ -57,8 +57,7 @@ module.exports = function( grunt ) {
 
     grunt.file.expand([
       '*.js',
-      './tasks/**/*.js',
-      './common/**/*.js',
+      './{app,common,tasks}/**/*.js',
       '!./tasks/templates/**'
     ]).forEach(function(f) {
       var lines = grunt.file.read(f).split('\n');
