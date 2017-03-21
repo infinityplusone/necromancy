@@ -2,8 +2,8 @@
  * Provides destroy:component to destroy Grunt Task
  *
  * Author(s):  Jonathan "Yoni" Knoll
- * Version:    0.5.2
- * Date:       2016-12-09
+ * Version:    0.5.3
+ * Date:       2017-03-21
  *
  */
 
