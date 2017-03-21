@@ -117,32 +117,32 @@ while [[ ! $commit =~ $reYesNo ]]; do
         echo "${nc}\n\tOK. We'll push to ${cyan}$remote${nc}.\n"
       fi
     done
-
-
-    # Get a commit message
-    while [[ ${#message} -lt 10 ]]; do
-      printf "${nc}\tPlease enter your commit message. ${gray}(10 character min)${cyan}\n\t"
-      read message
-      if [[ ${#message} -lt 10 ]]; then
-        echo "\t${yellow}Come on! Stop being such a lazy fuck!${nc}\n"
-      fi
-    done
-    if [[ ${#releaseOpt} -gt 1 ]]; then
-      message=$message" ### RELEASE $release"
-    fi
   fi
   printf $nc
 done
+
+# Get a commit message
+while [[ ${#message} -lt 10 ]]; do
+  printf "${nc}\tPlease enter your commit message. ${gray}(10 character min)${cyan}\n\t"
+  read message
+  if [[ ${#message} -lt 10 ]]; then
+    echo "\t${yellow}Come on! Stop being such a lazy fuck!${nc}\n"
+  fi
+done
+if [[ ${#releaseOpt} -gt 1 ]]; then
+  message=$message" ### RELEASE $release"
+fi
+
 
 # Final confirmation
 clear
 echo "\n${nc}${divider}"
 echo "\n\tWe'll be creating a new build from your ${cyan}$branch${nc} branch."
-# echo "\n\tCompiled files will be saved to ${cyan}release/build/$release/${nc}."
+echo "\tIf you have a local ${cyan}build${nc} branch, it will ${red}remove${nc} it."
 if [[ ! $commit =~ $reNo ]]; then
-  # echo "\n\tCompiled files will also be saved to ${cyan}build/${nc}."
-  echo "\tIf you have a local ${cyan}build${nc} branch, it will ${red}remove${nc} it."
   echo "\tIt will then create a new ${cyan}build${nc} branch, \n\tand push the new branch to ${cyan}$remote${nc} with the following commit message:\n\t ${cyan}$message${nc}\n"
+else
+  echo "\tIt will then create a new ${cyan}build${nc} branch, with the following commit message:\n\t ${cyan}$message${nc}\n"
 fi
 
 while [[ ! $confirm =~ $reYesNo ]]; do
@@ -157,38 +157,42 @@ done
 echo "\n\tOk. Here we go.\n"
 echo "\n${bigDivider}\n\n"
 
+
+# Check if build branch already exists, and delete it if it does
+if [[ $(git show-ref refs/heads/build) ]]; then
+  git branch -D build
+fi
+
+# Create a new build branch and check it out
+git checkout -b build
+
+# Run the setup script which pulls everything necessary in
+bower update
+
+grunt collect
+grunt prep-build
+
+# Add the build folder to the repo
+git add -f assets
+git add -f app/*
+git add -f bower_components/*
+
+git add -f hippo-schema.json
+
+git rm -rf tasks --force
+git rm -rf scripts --force
+git rm -rf .gitignore
+git rm -rf .npmignore
+git rm -rf .bowerrc
+git rm -rf bower.json
+git rm -rf package.json
+git rm -rf Gruntfile.js
+
+# Create the commit using the message that we specified
+git commit -q -m "$message"
+
+
 if [[ ! $commit =~ $reNo ]]; then
-  # Check if build branch already exists, and delete it if it does
-  if [[ $(git show-ref refs/heads/build) ]]; then
-    git branch -D build
-  fi
-
-  # Create a new build branch and check it out
-  git checkout -b build
-
-  # Run the setup script which pulls everything necessary in
-  bower update
-
-  grunt collect
-  grunt prep-build
-
-  # Add the build folder to the repo
-  git add -f assets
-  git add -f app/*
-  git add -f bower_components
-  git add -f hippo-schema.json
-
-  git rm -rf tasks --force
-  git rm -rf scripts --force
-  git rm -rf .gitignore
-  git rm -rf .npmignore
-  git rm -rf .bowerrc
-  git rm -rf bower.json
-  git rm -rf package.json
-  git rm -rf Gruntfile.js
-
-  # Create the commit using the message that we specified
-  git commit -q -m "$message"
 
   # Push the build branch
   git push -q $remote build --force
@@ -202,18 +206,17 @@ if [[ ! $commit =~ $reNo ]]; then
   #   git checkout $branch
   #   exit 1;
   # fi
-
-  // Checkout your original branch again to get us back to the beginning
-  echo "\n\tSwitching back to ${cyan}$branch${nc}"
-  git checkout -q $branch
-  rm -rf assets
-  npm install
-  rm -rf bower_components
-  bower install -f
-  grunt collect
-else
-  sh scripts/setup.sh
 fi
+
+# Checkout your original branch again to get us back to the beginning
+echo "\n\tSwitching back to ${cyan}$branch${nc}"
+git checkout -q $branch
+rm -rf assets
+npm install
+rm -rf bower_components
+bower install -f
+grunt collect
+
 
 # Fuck with people
 echo "\n${green}Done!\n\n\n"
